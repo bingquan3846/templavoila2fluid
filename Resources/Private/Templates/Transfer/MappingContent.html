@@ -1,0 +1,44 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+
+
+
+    <f:flashMessages />
+    <h5>Choose the template from templavoia <br>
+        remap to responding dynamic content element </h5>
+    <div   class="tx_templavoila2fluid" >
+        <f:form action="remapping">
+            <label for="template"> Templates from Templavoila</label>
+            <select name="template">
+                <f:for each="{templates}" as="template">
+                    <f:if condition="2 == {template.scope}">
+                    <option value="{template.uid}">{template.title}</option>
+                    </f:if>
+                </f:for>
+            </select>
+            <label for="dce">DCE</label>
+            <select name="dce">
+                <f:for each="{dces}" as="dce">
+                    <option value="{dce.uid}">{dce.title}</option>
+                </f:for>
+            </select>
+            <input type="submit" value="remapping" />
+        </f:form>
+
+    </div>
+
+
+</f:section>

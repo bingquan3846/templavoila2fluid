@@ -1,0 +1,46 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+
+    <f:flashMessages />
+    <h5>Select tempaltes to fluid html (/fileadmin/templates/)</h5>
+    <div   class="tx_templavoila2fluid" >
+        <f:form action="createDCE">
+            <p><label>FCE</label>
+            <select name="template[]" multiple size="<f:count>{templates}</f:count>">
+                <f:for each="{templates}" as="template">
+                    <f:if condition="2 == {template.scope}">
+                       <option value="{template.uid}">{template.title}</option>
+                    </f:if>
+                </f:for>
+            </select>
+            </p>
+            <p>
+            <input type="submit" value="transfer" />
+            </p>
+            <p>
+            <label>DCE</label>
+            <select name="dce[]" multiple size="<f:count>{dces}</f:count>">
+                <f:for each="{dces}" as="dce">
+                        <option value="{dce.uid}">{dce.title}</option>
+                </f:for>
+            </select>
+            </p>
+        </f:form>
+
+    </div>
+
+
+</f:section>

@@ -1,0 +1,12 @@
+
+ # Module configuration
+module.tx_templavoila2fluid_templavoila2fluid {
+	persistence {
+		storagePid = {$module.tx_templavoila2fluid_templavoila2fluid.persistence.storagePid}
+	}
+	view {
+		templateRootPath = {$module.tx_templavoila2fluid_templavoila2fluid.view.templateRootPath}
+		partialRootPath = {$module.tx_templavoila2fluid_templavoila2fluid.view.partialRootPath}
+		layoutRootPath = {$module.tx_templavoila2fluid_templavoila2fluid.view.layoutRootPath}
+	}
+}

@@ -1,0 +1,99 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    744,
+                    40
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": []
+                },
+                "name": "Log",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "347028473357"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "bodyContent",
+                            "propertyType": "String",
+                            "uid": "1417922126621"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Transfer => index"
+                },
+                "description": "",
+                "key": "templavoila2fluid",
+                "mainModule": "tools",
+                "name": "Templavoila to Fluid",
+                "tabLabel": "Templavoila to fluid "
+            }
+        ],
+        "description": "",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 6.2.0-7.9.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "version": ""
+        },
+        "extensionKey": "templavoila2fluid",
+        "name": "Templavoila to Fluid",
+        "originalExtensionKey": "",
+        "persons": [
+            {
+                "company": "",
+                "email": "",
+                "name": "Bingquan bao",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [],
+        "vendorName": "ZerosOnes"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2016-09-21 04:30",
+        "extension_builder_version": "6.2",
+        "be_user": " (1)"
+    }
+}

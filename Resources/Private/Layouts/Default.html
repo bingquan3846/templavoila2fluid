@@ -1,0 +1,64 @@
+<f:be.container>
+	<div class="typo3-fullDoc">
+		<div id="typo3-docheader">
+			<div class="typo3-docheader-functions">
+				<div class="left">
+					<f:be.buttons.csh />
+				</div>
+				<div class="right">
+					<f:be.pagePath />
+					<f:be.pageInfo />
+				</div>
+			</div>
+			<div class="typo3-docheader-buttons">
+				<div class="left">
+
+				</div>
+				<div class="right">
+					<f:be.buttons.shortcut />
+				</div>
+			</div>
+
+		</div>
+		<div id="typo3-docbody">
+			<div id="typo3-inner-docbody">
+				<style>
+					#typo3-docheader{
+						display: none;
+					}
+					div#typo3-docbody{
+						position:relative !important;
+					}
+					ul{
+						margin:0;
+						padding:0
+					}
+					ul li{
+						float: left;
+						display: block;
+						border:1px solid #ccc;
+						font-size:16px;
+						padding: 10px;
+						margin-right:10px;
+						font-weight:bold;
+					}
+
+				</style>
+				<f:flashMessages renderMode="div" />
+				<ul>
+					<li>
+					 	<f:link.action action="index"> 1.To Fluid Template</f:link.action>
+					</li>
+					<li>
+					 	<f:link.action action="fce2dce">2.FCE To DCE</f:link.action>
+					</li>
+					<li>
+						<f:link.action action="mappingContent">3. Remapping FCE to DCE</f:link.action>
+					</li>
+				</ul>
+				<div style="clear:both;"></div>
+				<f:render section="content" />
+			</div>
+		</div>
+	</div>
+</f:be.container>
