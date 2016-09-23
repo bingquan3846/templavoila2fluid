@@ -1,4 +1,4 @@
-# Templavloila to fluid and dce
+# Templavoila to fluid and dce
 
 Tool , based on extbase & fluid. It is editor friendly, default integration of social sharing and many other features.
 
