@@ -47,13 +47,23 @@ class DCEHelper implements \TYPO3\CMS\Core\SingletonInterface
 	<eval>trim,required</eval>
 </config>';
                                         break;
+                        case 'check' : $field['configuration'] ='
+<config>
+	<type>check</type>
+	<default>0</default>
+</config>';
+
+                        case 'text'  :
                         case 'rte'   : $field['configuration'] = '
 <config>
-	<type>input</type>
-	<size>30</size>
+	<type>text</type>
+	<rows>5</rows>
+	<cols>30</cols>
 	<eval>trim,required</eval>
-</config>';
+</config>
+<defaultExtras>richtext[*]:rte_transform[mode=ts_css]</defaultExtras>';
                                         break;
+                        case 'image'      :
                         case 'imagefixed' : $field['configuration'] = '
 <config>
 	<type>inline</type>
