@@ -54,7 +54,6 @@ class TransferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     protected $dceHelper;
 
-    protected $defaultViewObjectName = BackendTemplateView::class;
 
     /**
      * @param \ZerosOnes\Templavoila2fluid\Service\TemplavoilaHelper $templavoilaHelper
@@ -79,7 +78,6 @@ class TransferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $this->view->assign('templates', $templates);
     }
 
-
     public function template2fluidAction(){
         $templatesId = GeneralUtility::_POST('template');
 
@@ -89,7 +87,6 @@ class TransferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
         $this->redirect('index', 'Transfer', 'Templavoila2Fluid', array('transfer' => 1));
     }
-
 
     public function fce2dceAction(){
 

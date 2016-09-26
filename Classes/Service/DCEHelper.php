@@ -18,6 +18,7 @@ class DCEHelper implements \TYPO3\CMS\Core\SingletonInterface
                 $dataStructure = \TYPO3\CMS\Core\Utility\GeneralUtility::xml2array($template['dataprot']);
 
                 $dce = array();
+                $template['title'] = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToLowerCamelCase($template['title']);
                 $dce['title'] = $template['title'];
                 $dce['fields'] = count($dataStructure['ROOT']['el']);
                 $dce['template_type'] = 'file';

@@ -26,6 +26,8 @@ class TemplavoilaHelper implements \TYPO3\CMS\Core\SingletonInterface{
         foreach($templates as $template){
             $TO = unserialize($template['templatemapping']);
             $out = array();
+
+
             foreach($TO['MappingData_cached']['cArray'] as $key => $item){
 
                 if(!is_int($key) && intval($template['scope']) != 1){
@@ -38,6 +40,9 @@ class TemplavoilaHelper implements \TYPO3\CMS\Core\SingletonInterface{
                 }
                 $out[] =  (is_numeric($key)) ? $item : (( intval($template['scope']) === 1)? '<f:cObject typoscriptObjectPath="lib.' .$key. '" />' : '{field.' .$key. '}') ;
             }
+            $template['title'] = str_replace('/', '', $template['title']);
+            //var_dump($template['title']);exit;
+
             if( intval($template['scope']) === 1){
                 \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile(PATH_site.'/fileadmin/templates/fluid/'.$template['title'].'.html', implode('', $out));
             }else{
