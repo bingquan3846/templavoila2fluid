@@ -19,6 +19,7 @@ class DCEHelper implements \TYPO3\CMS\Core\SingletonInterface
 
                 $dce = array();
                 $template['title'] = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToLowerCamelCase($template['title']);
+                $templates['title'] = str_replace('/', '', $template['title']);
                 $dce['title'] = $template['title'];
                 $dce['fields'] = count($dataStructure['ROOT']['el']);
                 $dce['template_type'] = 'file';
