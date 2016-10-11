@@ -1,8 +1,16 @@
 <?php
 namespace ZerosOnes\Templavoila2fluid\Service;
 
+/**
+ * Class TemplavoilaHelper
+ * @package ZerosOnes\Templavoila2fluid\Service
+ */
 class TemplavoilaHelper implements \TYPO3\CMS\Core\SingletonInterface{
 
+    /**
+     * @param string $templateId
+     * @return mixed
+     */
     public function getAllTemplates($templateId = ''){
         if( !empty($templateId) ){
             $where = 'a.uid in (' . implode(',', $templateId) . ')';
@@ -14,6 +22,9 @@ class TemplavoilaHelper implements \TYPO3\CMS\Core\SingletonInterface{
         return $tempaltes;
     }
 
+    /**
+     * @param $templateId
+     */
     public function transfer2Fluid($templateId){
         $templates = $this->getAllTemplates($templateId);
         if(!is_dir(PATH_site.'/fileadmin/templates/fluid')){
@@ -40,7 +51,8 @@ class TemplavoilaHelper implements \TYPO3\CMS\Core\SingletonInterface{
                 }
                 $out[] =  (is_numeric($key)) ? $item : (( intval($template['scope']) === 1)? '<f:cObject typoscriptObjectPath="lib.' .$key. '" />' : '{field.' .$key. '}') ;
             }
-            $template['title'] = str_replace('/', '', $template['title']);
+            $template['title'] = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToLowerCamelCase($template['title']);
+            $templates['title'] = str_replace('/', '', $template['title']);
             //var_dump($template['title']);exit;
 
             if( intval($template['scope']) === 1){
@@ -55,6 +67,10 @@ class TemplavoilaHelper implements \TYPO3\CMS\Core\SingletonInterface{
 
     }
 
+    /**
+     * @param $templateId
+     * @return mixed
+     */
     public function getContentsByTemplate($templateId){
         $contents = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('*', 'tt_content', 'hidden = 0 and deleted = 0 and tx_templavoila_to =' . $templateId);
         return $contents;

@@ -1,17 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Bingquan Bao
- * Date: 22.09.2016
- * Time: 11:46
- */
+
 
 namespace ZerosOnes\Templavoila2fluid\Service;
 
 
+/**
+ * Class DCEHelper
+ * @package ZerosOnes\Templavoila2fluid\Service
+ */
 class DCEHelper implements \TYPO3\CMS\Core\SingletonInterface
 {
 
+    /**
+     * @param $templates
+     */
     public function createDCE($templates){
         if(!empty($templates)){
             foreach($templates as $template){
@@ -176,7 +178,12 @@ class DCEHelper implements \TYPO3\CMS\Core\SingletonInterface
             }
         }
     }
-    public function getAllDCE( $dceId = '' ){
+
+    /**
+     * @param string $dceId
+     * @return mixed
+     */
+    public function getAllDCE($dceId = '' ){
         if( !empty($templateId) ){
             $where = 'uid in (' . implode(',', $templateId) . ')';
         }else{
@@ -187,6 +194,10 @@ class DCEHelper implements \TYPO3\CMS\Core\SingletonInterface
         return $dces;
     }
 
+    /**
+     * @param $title
+     * @return bool
+     */
     public function deleteDCEByTitle($title){
 
         $GLOBALS['TYPO3_DB']->exec_DELETEquery('tx_dce_domain_model_dcefield ', ' parent_dce in (select uid from  tx_dce_domain_model_dce b  where b.title  like "%' . $title . '%")');
@@ -196,6 +207,10 @@ class DCEHelper implements \TYPO3\CMS\Core\SingletonInterface
         return true;
     }
 
+    /**
+     * @param $fields
+     * @return mixed
+     */
     public function insertDCE($fields){
 
         $result = $GLOBALS['TYPO3_DB']->exec_INSERTquery('tx_dce_domain_model_dce', $fields);
@@ -206,11 +221,19 @@ class DCEHelper implements \TYPO3\CMS\Core\SingletonInterface
 
     }
 
+    /**
+     * @param $fields
+     * @return mixed
+     */
     public function insertDCEFields($fields){
         return  $GLOBALS['TYPO3_DB']->exec_INSERTquery('tx_dce_domain_model_dcefield', $fields);
     }
 
 
+    /**
+     * @param $key
+     * @return mixed
+     */
     public function getCorrectKey($key){
         $keysArray = explode('_', $key);
 
@@ -221,6 +244,11 @@ class DCEHelper implements \TYPO3\CMS\Core\SingletonInterface
         return $key;
     }
 
+    /**
+     * @param $oldFlexform
+     * @param $fields
+     * @return mixed
+     */
     public function createFlexform($oldFlexform, $fields){
         $dceFields = array();
 
@@ -233,14 +261,27 @@ class DCEHelper implements \TYPO3\CMS\Core\SingletonInterface
         return str_replace($fields, $dceFields, $oldFlexform);
     }
 
+    /**
+     * @param $flexform
+     * @param $uid
+     */
     public function updateFlexform($flexform, $uid ){
         $GLOBALS['TYPO3_DB']->exec_UPDATEquery('tt_content', 'uid='.intval($uid), array('pi_flexform' => $flexform));
     }
 
+    /**
+     * @param $dceId
+     * @param $uid
+     */
     public function updateCtype($dceId, $uid){
         $GLOBALS['TYPO3_DB']->exec_UPDATEquery('tt_content', 'uid='.intval($uid), array('CType' => 'dce_dceuid'.$dceId));
     }
 
+    /**
+     * @param $content
+     * @param $file
+     * @param $fieldName
+     */
     public function updateFileReference($content, $file, $fieldName){
 
         $data['pid'] = $content['pid'];

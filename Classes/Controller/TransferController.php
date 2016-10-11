@@ -43,7 +43,7 @@ use TYPO3\CMS\Lang\LanguageService;
      ***************************************************************/
 
 /**
- * LogController
+ *  TransferController
  */
 class TransferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
@@ -52,6 +52,9 @@ class TransferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     protected $templavoilaHelper;
 
+    /**
+     * @var
+     */
     protected $dceHelper;
 
 
@@ -62,6 +65,9 @@ class TransferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $this->templavoilaHelper = $templavoilaHelper;
     }
 
+    /**
+     * @param \ZerosOnes\Templavoila2fluid\Service\DCEHelper $dceHelper
+     */
     public function injectDceHelper(\ZerosOnes\Templavoila2fluid\Service\DCEHelper $dceHelper){
         $this->dceHelper = $dceHelper;
 
@@ -78,6 +84,11 @@ class TransferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $this->view->assign('templates', $templates);
     }
 
+    /**
+     * action template2fluid
+     *
+     * @return void
+     */
     public function template2fluidAction(){
         $templatesId = GeneralUtility::_POST('template');
 
@@ -85,9 +96,16 @@ class TransferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
             $this->templavoilaHelper->transfer2Fluid($templatesId);
         }
 
+        $this->addFlashMessage('The chosen Tempaltes are changed to html in fileadmin/templates/fluid/ ');
+
         $this->redirect('index', 'Transfer', 'Templavoila2Fluid', array('transfer' => 1));
     }
 
+    /**
+     * action fce2dce
+     *
+     * @return void
+     */
     public function fce2dceAction(){
 
         $templates = $this->templavoilaHelper->getAllTemplates();
@@ -97,15 +115,26 @@ class TransferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     }
 
+    /**
+     * action createDCE
+     *
+     * @return void
+     */
     public function createDCEAction(){
 
         $templatesId = GeneralUtility::_POST('template');
         $templates =  $this->templavoilaHelper->getAllTemplates($templatesId);
         $this->dceHelper->createDCE($templates);
+        $this->addFlashMessage('The responding DCEs are created');
         $this->redirect('fce2dce', 'Transfer');
 
     }
 
+    /**
+     * action mappingContent
+     *
+     * @return void
+     */
     public function mappingContentAction(){
 
         $templates = $this->templavoilaHelper->getAllTemplates();
@@ -115,6 +144,11 @@ class TransferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     }
 
+    /**
+     * action remapping
+     *
+     * @return void
+     */
     public function remappingAction(){
 
         $templatesId = GeneralUtility::_POST('template');

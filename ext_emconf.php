@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "templavoila2fluid".
  *
- * Auto generated 26-09-2016 10:55
+ * Auto generated 11-10-2016 11:29
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -16,11 +16,11 @@ $EM_CONF[$_EXTKEY] = array (
   'category' => 'plugin',
   'author' => 'Bingquan bao',
   'author_email' => '',
-  'state' => 'alpha',
+  'state' => 'Beta',
   'uploadfolder' => false,
   'createDirs' => '',
   'clearCacheOnLoad' => 0,
-  'version' => '1.2.0',
+  'version' => '2.0.0',
   'constraints' => 
   array (
     'depends' => 
