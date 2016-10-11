@@ -30,3 +30,4 @@ This extension is not so automatic. you can customize it as it is required.
 6) that can not solve all of the problems, you should add backend_layout and set page to fluid Template with typoscript.
 
 7) fluid html should also be modified manually to render correct content.
+
